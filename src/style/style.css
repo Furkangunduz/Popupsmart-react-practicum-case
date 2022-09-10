@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=DM+Sans:wght@400;700&family=DM+Serif+Display&family=Inter&family=Karla:wght@400;700&family=Poppins:wght@500&family=Red+Hat+Display&family=Roboto:wght@300;400;500;700;900&family=Ubuntu:wght@300;400;500;700&display=swap');
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	border: none;
+	text-decoration: none;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+:root {
+	--primary: rgb(217, 85, 80);
+	--section-shadow: rgba(255, 255, 255, 0.1);
+	--text-color: rgb(255, 255, 255);
+}
+
+html,
+body,
+#root {
+	height: 100%;
+	font-size: 18px;
+}
+
+#root {
+	background-color: var(--primary);
+}
+main {
+	max-width: 500px;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	color: var(--text-color);
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 35px 0;
+	font-size: 1.1rem;
+}
+
+.addTodo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
