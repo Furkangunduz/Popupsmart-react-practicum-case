@@ -41,13 +41,13 @@
 }
 .form_field:focus ~ .form_label {
 	position: absolute;
-	top: 0;
+	top: -15px;
 	display: block;
 	transition: 0.2s;
 	font-size: 0.8rem;
-	color: var(--text-color);
+	color: var(--text-color-alpha);
 	font-weight: 700;
-	border-bottom: 2px solid white;
+	border-bottom: 2px solid var(--text-color-alpha);
 	padding-bottom: 10px;
 }
 /* reset input */

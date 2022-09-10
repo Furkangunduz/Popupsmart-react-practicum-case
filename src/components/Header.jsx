@@ -6,7 +6,7 @@ function Header() {
 			<div>
 				<h1>Todo-App</h1>
 			</div>
-			<div>
+			<div className='user-name'>
 				<p>Kullanıcı Adı</p>
 			</div>
 		</header>
