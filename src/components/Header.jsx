@@ -7,7 +7,7 @@ function Header() {
 				<h1>Todo-App</h1>
 			</div>
 			<div className='user-name'>
-				<p>Kullanıcı Adı</p>
+				<p>KralDragon</p>
 			</div>
 		</header>
 	);
