@@ -33,7 +33,6 @@ main {
 	flex-direction: column;
 	color: var(--text-color);
 }
-
 header {
 	display: flex;
 	justify-content: space-between;
@@ -41,9 +40,24 @@ header {
 	margin: 35px 0;
 	font-size: 1.1rem;
 }
-
 .addTodo {
 	display: flex;
-	align-items: center;
+	align-items: flex-end;
 	justify-content: space-between;
+}
+
+.submit_button {
+	padding: 7.5px 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: 500;
+}
+
+.submit_button:hover {
+	background-color: rgb(255, 147, 147);
+	scale: 1.1;
+	transition: all 0.2s;
+	color: white;
+	transform: translateY(-2px);
+	font-weight: 600;
 }
