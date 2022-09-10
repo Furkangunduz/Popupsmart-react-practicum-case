@@ -75,6 +75,52 @@ header {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	max-height: 500px;
 	overflow-y: auto;
 	margin-top: 35px;
+	padding: 10px;
+}
+
+.todo-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid var(--text-color-alpha);
+	padding: 10px 15px;
+	border-radius: 10px;
+}
+.todo-item:hover {
+	background-color: var(--section-shadow);
+	scale: 1.1px;
+	transform: translateY(-3px);
+}
+.todo-actions {
+	display: flex;
+	gap: 30px;
+	margin-right: 10px;
+}
+
+.todo-actions img {
+	cursor: pointer;
+}
+
+.todo-actions img:hover {
+	scale: 1.1;
+	color: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--section-shadow);
+}
+
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
 }
