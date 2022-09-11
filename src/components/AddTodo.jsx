@@ -1,6 +1,6 @@
 import '../style/todoInput.css';
 
-function AddTodo({ value, onChange, onSubmit }) {
+function AddTodo({ value, onChange, onSubmit, onEdit, isEditing, editingTodoId }) {
 	return (
 		<div className='addTodo'>
 			<div className='form_group'>
@@ -18,8 +18,10 @@ function AddTodo({ value, onChange, onSubmit }) {
 				</label>
 			</div>
 			<div>
-				<button className='button' onClick={onSubmit}>
-					Add Todo
+				<button
+					className='button'
+					onClick={isEditing ? () => onEdit(editingTodoId) : onSubmit}>
+					{isEditing ? 'Edit todo' : 'Add Todo'}
 				</button>
 			</div>
 		</div>

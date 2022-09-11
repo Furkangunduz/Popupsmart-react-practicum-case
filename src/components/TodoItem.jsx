@@ -1,7 +1,7 @@
 import deleteIcon from '../images/delete.svg';
 import editIcon from '../images/edit.svg';
 
-function TodoItem({ todo, onDelete, toggleCompleted }) {
+function TodoItem({ todo, onDelete, toggleCompleted, chooseTodoForEdit }) {
 	return (
 		<li className={`todo-item ${todo.isCompleted ? 'completed-todo' : ''}`}>
 			<div>
@@ -16,7 +16,14 @@ function TodoItem({ todo, onDelete, toggleCompleted }) {
 						onDelete(todo.id);
 					}}
 				/>
-				<img src={editIcon} width='30px' alt='edit' />
+				<img
+					src={editIcon}
+					width='30px'
+					alt='edit'
+					onClick={() => {
+						chooseTodoForEdit(todo.id);
+					}}
+				/>
 				<input
 					type='checkbox'
 					checked={todo.isCompleted}

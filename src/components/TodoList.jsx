@@ -1,6 +1,6 @@
 import TodoItem from './TodoItem';
 
-function TodoList({ todos, onDelete, toggleCompleted }) {
+function TodoList({ todos, onDelete, toggleCompleted, chooseTodoForEdit }) {
 	return (
 		<ul className='todo-list-container'>
 			{todos.map((todo) => (
@@ -9,6 +9,7 @@ function TodoList({ todos, onDelete, toggleCompleted }) {
 					todo={todo}
 					onDelete={onDelete}
 					toggleCompleted={toggleCompleted}
+					chooseTodoForEdit={chooseTodoForEdit}
 				/>
 			))}
 		</ul>
