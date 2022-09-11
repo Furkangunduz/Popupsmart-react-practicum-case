@@ -4,7 +4,7 @@ function Header({ username, onLeave }) {
 	return (
 		<header>
 			<div>
-				<h1>Todo-App</h1>
+				<h1>Todo App</h1>
 			</div>
 			<div style={{ display: 'flex', gap: '20px' }}>
 				<div className='user-name'>

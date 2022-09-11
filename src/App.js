@@ -117,14 +117,13 @@ function App() {
 
 
   useEffect(() => {
-    getDataFromApi()
-
     let username = JSON.parse(localStorage.getItem("username"))
     if (!username) {
       setIsLoggedIn(false)
     } else {
       setIsLoggedIn(true)
       setUsername(username)
+      getDataFromApi()
     }
 
 
