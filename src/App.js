@@ -25,8 +25,12 @@ function App() {
     setTodos(response)
   }
   const onSubmit = async () => {
-    if (newTodo.content.trim() == "") {
-      toast.error("Lütfen todo girin.")
+    if (newTodo.content.trim().length == 0) {
+      toast.error("Lütfen todo giriniz.")
+      return
+    }
+    if (newTodo.content.trim().length < 3) {
+      toast.error("Todo'nun uzunluğu en az 3 karakter olabilir.")
       return
     }
     setLoading(true)
@@ -49,19 +53,16 @@ function App() {
     })
     setLoading(false)
   }
-
   const onChange = (e) => {
     setLoading(true)
     setNewTodo((prev) => ({ ...prev, "content": e.target.value }))
     setLoading(false)
   }
-
   const setInputEmpty = () => {
     setLoading(false)
     setNewTodo((prev) => ({ ...prev, "content": "" }))
     setLoading(true)
   }
-
   const onDelete = (id) => {
     setLoading(false)
     fetch(process.env.REACT_APP_API_ENDPOINT + "todos" + `/${id}`, {
@@ -71,8 +72,7 @@ function App() {
       method: "DELETE",
     }).then(() => {
       getDataFromApi()
-      toast.succes("Başarıyla silindi.")
-
+      toast("Başarıyla silindi.")
     })
     setLoading(true)
   }

@@ -1,4 +1,3 @@
-import React from 'react';
 import '../style/todoInput.css';
 
 function AddTodo({ value, onChange, onSubmit }) {
