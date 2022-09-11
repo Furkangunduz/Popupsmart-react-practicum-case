@@ -12,9 +12,12 @@
 
 :root {
 	--primary: rgb(217, 85, 80);
+	--dark-mode: rgb(0, 0, 0, 0.8);
 	--section-shadow: rgba(255, 255, 255, 0.1);
 	--text-color: rgb(255, 255, 255);
 	--text-color-alpha: rgba(255, 255, 255, 0.8);
+	--form-control-color: rebeccapurple;
+	--form-control-disabled: #959495;
 }
 
 html,
@@ -86,14 +89,26 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	border: 1px solid var(--text-color-alpha);
+	background-color: var(--section-shadow);
 	padding: 10px 15px;
 	border-radius: 10px;
 }
 .todo-item:hover {
-	background-color: var(--section-shadow);
 	scale: 1.1px;
 	transform: translateY(-3px);
 }
+
+.completed-todo {
+	position: relative;
+}
+.completed-todo::before {
+	content: ' ';
+	width: 50%;
+	height: 2px;
+	background-color: #fff;
+	position: absolute;
+}
+
 .todo-actions {
 	display: flex;
 	gap: 30px;
@@ -107,6 +122,13 @@ header {
 .todo-actions img:hover {
 	scale: 1.1;
 	color: rgba(0, 0, 0, 0.1);
+}
+
+input[type='checkbox'] {
+	color: currentColor;
+	width: 25px;
+	border: 0.15em solid currentColor;
+	border-radius: 5px;
 }
 
 .loadingSpinnerContainer {

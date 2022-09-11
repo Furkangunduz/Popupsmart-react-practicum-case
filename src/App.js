@@ -58,6 +58,32 @@ function App() {
     setNewTodo((prev) => ({ ...prev, "content": e.target.value }))
     setLoading(false)
   }
+  const toggleCompleted = async (checked, todo) => {
+    setLoading(true)
+    await fetch(process.env.REACT_APP_API_ENDPOINT + `todos/${todo.id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PUT",
+      body: JSON.stringify({
+        "content": todo.content,
+        "isCompleted": checked,
+        "id": todo.id
+      }),
+    }).then((response) => response.json())
+      .then((data) => {
+        toast.success("Todo Başarıyla güncellendi.")
+        getDataFromApi()
+        console.log(data)
+      })
+      .catch((error) => {
+        toast.error("Bir hata oluştu.")
+        console.log(error)
+      })
+
+    setLoading(false)
+
+  }
   const setInputEmpty = () => {
     setLoading(false)
     setNewTodo((prev) => ({ ...prev, "content": "" }))
@@ -89,7 +115,7 @@ function App() {
     <main>
       <Header />
       <AddTodo value={newTodo.content} onChange={onChange} onSubmit={onSubmit} />
-      <TodoList todos={todos} onDelete={onDelete} />
+      <TodoList todos={todos} onDelete={onDelete} toggleCompleted={toggleCompleted} />
     </main>
   );
 }
