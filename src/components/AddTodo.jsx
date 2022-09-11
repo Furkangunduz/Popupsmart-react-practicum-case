@@ -18,7 +18,7 @@ function AddTodo({ value, onChange, onSubmit }) {
 				</label>
 			</div>
 			<div>
-				<button className='submit_button' onClick={onSubmit}>
+				<button className='button' onClick={onSubmit}>
 					Add Todo
 				</button>
 			</div>
