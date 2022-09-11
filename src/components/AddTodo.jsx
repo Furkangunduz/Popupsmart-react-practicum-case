@@ -5,6 +5,7 @@ function AddTodo({ value, onChange, onSubmit, onEdit, isEditing, editingTodoId }
 		<div className='addTodo'>
 			<div className='form_group'>
 				<input
+					autocomplete='off'
 					type='input'
 					className='form_field'
 					placeholder='What to do today ?'

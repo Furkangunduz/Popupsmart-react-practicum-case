@@ -6,6 +6,7 @@ function Login({ username, setUsername, onLogin }) {
 			<div className='form_group'>
 				<input
 					type='input'
+					autocomplete='off'
 					className='form_field'
 					placeholder='Enter name.'
 					name='newtodo'
