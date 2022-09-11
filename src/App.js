@@ -104,6 +104,11 @@ function App() {
         console.log(error)
       })
   }
+  const onLeave = () => {
+    setIsLoggedIn(false)
+    setUsername("")
+
+  }
 
   const chooseTodoForEdit = async (id) => {
     setLoading(true)
@@ -131,14 +136,29 @@ function App() {
     setLoading(false)
 
   }
+  const deleteAllTodos = async () => {
+    setLoading(true)
+
+    for (let i = 0; i < todos.length; i++) {
+      await fetch(process.env.REACT_APP_API_ENDPOINT + `todos/${todos[i].id}`, fetchOptions("DELETE"))
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+
+    setTodos([])
+    setLoading(false)
+
+    toast.success("Bütün todolar silindi.")
+
+  }
+
+
   const setInputEmpty = () => {
     setNewTodo((prev) => ({ ...prev, "content": "" }))
   }
-  const onLeave = () => {
-    setIsLoggedIn(false)
-    setUsername("")
 
-  }
+
 
 
   useEffect(() => {
@@ -163,7 +183,7 @@ function App() {
             {loading && <Spinner></Spinner>}
             <Header username={username} onLeave={onLeave} />
             <AddTodo value={newTodo.content} isEditing={isEditing} onEdit={onEdit} editingTodoId={editingTodoId} getSingleTodo={getSingleTodo} onChange={onChange} onSubmit={onSubmit} />
-            <TodoList todos={todos} onDelete={onDelete} toggleCompleted={toggleCompleted} chooseTodoForEdit={chooseTodoForEdit} />
+            <TodoList todos={todos} onDelete={onDelete} deleteAllTodos={deleteAllTodos} toggleCompleted={toggleCompleted} chooseTodoForEdit={chooseTodoForEdit} />
           </>
       }
     </main>
