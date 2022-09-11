@@ -1,13 +1,18 @@
-import React from 'react';
+import Exit from '../images/exit.svg';
 
-function Header() {
+function Header({ username, onLeave }) {
 	return (
 		<header>
 			<div>
 				<h1>Todo-App</h1>
 			</div>
-			<div className='user-name'>
-				<p>KralDragon</p>
+			<div style={{ display: 'flex', gap: '20px' }}>
+				<div className='user-name'>
+					<p>{username}</p>
+				</div>
+				<div className='leave' onClick={onLeave}>
+					<img src={Exit} width='35px' alt='exit ıcon' />
+				</div>
 			</div>
 		</header>
 	);

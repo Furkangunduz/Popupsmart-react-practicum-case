@@ -108,6 +108,12 @@ function App() {
     setNewTodo((prev) => ({ ...prev, "content": "" }))
   }
 
+  const onLeave = () => {
+    setIsLoggedIn(false)
+    setUsername("")
+
+  }
+
 
 
   useEffect(() => {
@@ -133,7 +139,7 @@ function App() {
           <Login username={username} setUsername={setUsername} onLogin={onLogin} />
           :
           <>
-            <Header username={username} />
+            <Header username={username} onLeave={onLeave} />
             <AddTodo value={newTodo.content} onChange={onChange} onSubmit={onSubmit} />
             <TodoList todos={todos} onDelete={onDelete} toggleCompleted={toggleCompleted} />
           </>

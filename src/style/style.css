@@ -12,7 +12,7 @@
 
 :root {
 	--primary: rgb(217, 85, 80);
-	--section-shadow: rgba(0, 0, 0, 0.06);
+	--section-shadow: rgba(255, 255, 255, 0.06);
 	--completed-todo-bg: rgb(124, 62, 60);
 	--login-bg: rgb(176, 117, 115);
 	--dark-mode: rgb(0, 0, 0, 0.8);
@@ -46,6 +46,21 @@ header {
 	padding-bottom: 20px;
 	border-bottom: 3px solid var(--text-color);
 }
+.leave {
+	display: grid;
+	place-content: center;
+	border: 1px solid var(--text-color);
+	background-color: var(--section-shadow);
+	padding: 7.5px 15px 2px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.leave:hover {
+	background-color: var(--section-shadow);
+	scale: 1.05;
+	transform: translateY(-5px);
+	transition: all 0.2s;
+}
 .login {
 	border: 1px solid white;
 	width: 100%;
@@ -75,6 +90,8 @@ header {
 }
 
 .button {
+	display: grid;
+	place-content: center;
 	padding: 7.5px 15px;
 	border-radius: 5px;
 	cursor: pointer;
@@ -146,6 +163,7 @@ input[type='checkbox'] {
 	width: 25px;
 	border: 0.15em solid currentColor;
 	border-radius: 5px;
+	cursor: pointer;
 }
 
 .loadingSpinnerContainer {
@@ -188,9 +206,9 @@ input[type='checkbox'] {
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #888;
+	background: rgb(173, 173, 173);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #555;
+	background: rgb(141, 141, 141);
 }
