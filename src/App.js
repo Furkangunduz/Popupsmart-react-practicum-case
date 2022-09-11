@@ -15,6 +15,17 @@ function App() {
     isCompleted: false,
   })
 
+
+  const fetchOptions = (method, body = undefined) => {
+    return {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: method,
+      body: JSON.stringify(body),
+    }
+  }
+
   const getDataFromApi = async () => {
     setLoading(true)
     const response = await fetch(process.env.REACT_APP_API_ENDPOINT + "todos")
@@ -25,7 +36,7 @@ function App() {
     setTodos(response)
   }
   const onSubmit = async () => {
-    if (newTodo.content.trim().length == 0) {
+    if (newTodo.content.trim().length === 0) {
       toast.error("Lütfen todo giriniz.")
       return
     }
@@ -35,79 +46,55 @@ function App() {
     }
     setLoading(true)
     await fetch(
-      process.env.REACT_APP_API_ENDPOINT + "todos", {
-      headers: {
-        "Content-Type": "application/json"
-      },
-      method: "POST",
-      body: JSON.stringify(newTodo),
-    }).then(
-      (response) => response.json()
-    ).then(data => {
-      toast.success("Todo başarıyla kaydedildi.")
-      getDataFromApi()
-      setInputEmpty()
-
-    }).catch(error => {
-      console.log("Error.", error)
-    })
+      process.env.REACT_APP_API_ENDPOINT + "todos", fetchOptions("POST", newTodo))
+      .then(() => {
+        toast.success("Todo başarıyla kaydedildi.")
+        getDataFromApi()
+        setInputEmpty()
+      }).catch(error => {
+        console.log("Error.", error)
+      })
     setLoading(false)
   }
   const onChange = (e) => {
-    setLoading(true)
     setNewTodo((prev) => ({ ...prev, "content": e.target.value }))
-    setLoading(false)
   }
   const toggleCompleted = async (checked, todo) => {
     setLoading(true)
-    await fetch(process.env.REACT_APP_API_ENDPOINT + `todos/${todo.id}`, {
-      headers: {
-        "Content-Type": "application/json"
-      },
-      method: "PUT",
-      body: JSON.stringify({
-        "content": todo.content,
+    await fetch(process.env.REACT_APP_API_ENDPOINT + `todos/${todo.id}`,
+      fetchOptions("PUT", {
+        ...todo,
         "isCompleted": checked,
-        "id": todo.id
-      }),
-    }).then((response) => response.json())
-      .then((data) => {
+      }))
+      .then((response) => {
         toast.success("Todo Başarıyla güncellendi.")
         getDataFromApi()
-        console.log(data)
+        console.log(response.json())
       })
       .catch((error) => {
         toast.error("Bir hata oluştu.")
         console.log(error)
       })
-
     setLoading(false)
 
   }
   const setInputEmpty = () => {
-    setLoading(false)
     setNewTodo((prev) => ({ ...prev, "content": "" }))
-    setLoading(true)
   }
-  const onDelete = (id) => {
+  const onDelete = async (id) => {
     setLoading(false)
-    fetch(process.env.REACT_APP_API_ENDPOINT + "todos" + `/${id}`, {
-      headers: {
-        "Content-Type": "application/json"
-      },
-      method: "DELETE",
-    }).then(() => {
-      getDataFromApi()
-      toast("Başarıyla silindi.")
-    })
+    await fetch(process.env.REACT_APP_API_ENDPOINT + `todos/${id}`, fetchOptions("DELETE"))
+      .then(() => {
+        getDataFromApi()
+        toast("Başarıyla silindi.")
+      })
     setLoading(true)
   }
+
 
   useEffect(() => {
     getDataFromApi()
   }, [])
-
-
 
   if (loading) return <Spinner></Spinner>
 
