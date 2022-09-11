@@ -5,6 +5,7 @@ import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
 import Spinner from "./components/Spinner"
 import Login from "./components/Login";
+import ThemeSwitch from "./components/ThemeSwitch";
 
 import { toast } from "react-toastify"
 
@@ -15,10 +16,13 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
   const [editingTodoId, setEditingTodoId] = useState("")
+  const [theme, setTheme] = useState(JSON.parse(localStorage.getItem('theme')) || "")
+
   const [newTodo, setNewTodo] = useState({
     content: "",
     isCompleted: false,
   })
+
 
 
   const fetchOptions = (method, body = undefined) => {
@@ -47,7 +51,6 @@ function App() {
       )
     return response
   }
-
   const onLogin = () => {
     if (!(username.length >= 2)) {
       toast.error("Kullanıcı adı 3 veya daha fazla karakter içermeli.")
@@ -109,7 +112,6 @@ function App() {
     setUsername("")
 
   }
-
   const chooseTodoForEdit = async (id) => {
     setLoading(true)
     setIsEditing(true)
@@ -152,16 +154,35 @@ function App() {
     toast.success("Bütün todolar silindi.")
 
   }
-
-
   const setInputEmpty = () => {
     setNewTodo((prev) => ({ ...prev, "content": "" }))
   }
 
+  const changeTheme = () => {
+    setTheme(prev => {
+      if (prev == "dark") {
+        localStorage.setItem("theme", JSON.stringify(""))
+        document.querySelector("body").classList.remove("dark-theme")
+        return ""
+      } else {
+        localStorage.setItem("theme", JSON.stringify("dark"))
+        document.querySelector("body").classList.add("dark-theme")
+        return "dark"
+      }
+    })
+  }
 
+  const addCurrentThemeToBody = () => {
+    if (theme == "dark") {
+      document.querySelector("body").classList.add("dark-theme")
+    } else {
+      document.querySelector("body").classList.rmeove("dark-theme")
 
+    }
+  }
 
   useEffect(() => {
+    addCurrentThemeToBody()
     let username = JSON.parse(localStorage.getItem("username"))
     if (!username) {
       setIsLoggedIn(false)
@@ -175,6 +196,7 @@ function App() {
 
   return (
     <main>
+      <ThemeSwitch changeTheme={changeTheme} theme={theme} />
       {
         !isLoggedIn ?
           <Login username={username} setUsername={setUsername} onLogin={onLogin} />

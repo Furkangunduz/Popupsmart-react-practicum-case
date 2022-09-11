@@ -10,14 +10,29 @@
 	font-family: 'Ubuntu', sans-serif;
 }
 
-:root {
+body {
 	--primary: rgb(217, 85, 80);
 	--section-shadow: rgba(255, 255, 255, 0.06);
-	--completed-todo-bg: rgb(124, 62, 60);
-	--login-bg: rgb(176, 117, 115);
-	--dark-mode: rgb(0, 0, 0, 0.8);
+	--completed-todo-bg: rgb(144, 54, 53);
+	--login-bg: rgb(213, 148, 146);
 	--text-color: rgb(255, 255, 255);
 	--text-color-alpha: rgba(255, 255, 255, 0.8);
+	--border-color: rgb(255, 255, 255);
+	--button-bg: rgb(255, 255, 255);
+	--button-hover-bg: rgb(213, 148, 146);
+	--button-text-color: #000;
+}
+
+body.dark-theme {
+	--primary: #16213e;
+	--section-shadow: rgba(255, 255, 255, 0.06);
+	--completed-todo-bg: #425890;
+	--text-color: rgba(255, 255, 255, 0.9);
+	--text-color-alpha: rgba(255, 255, 255, 0.8);
+	--border-color: rgba(255, 255, 255, 0.7);
+	--button-bg: #0f3460;
+	--button-hover-bg: #2a5d9b;
+	--button-text-color: #fff;
 }
 
 html,
@@ -44,12 +59,12 @@ header {
 	margin: 35px 0;
 	font-size: 1.1rem;
 	padding-bottom: 20px;
-	border-bottom: 3px solid var(--text-color);
+	border-bottom: 3px solid var(--border-color);
 }
 .leave {
 	display: grid;
 	place-content: center;
-	border: 1px solid var(--text-color);
+	border: 1px solid var(--border-color);
 	background-color: var(--section-shadow);
 	padding: 7.5px 15px 2px;
 	border-radius: 5px;
@@ -62,7 +77,7 @@ header {
 	transition: all 0.2s;
 }
 .login {
-	border: 1px solid white;
+	border: 1px solid var(--border-color);
 	width: 100%;
 	border-radius: 10px;
 	padding: 40px 50px;
@@ -77,7 +92,7 @@ header {
 }
 
 .user-name {
-	border: 2px solid var(--text-color-alpha);
+	border: 2px solid var(--border-color);
 	padding: 10px 15px;
 	border-radius: 15px;
 	background-color: var(--section-shadow);
@@ -93,13 +108,16 @@ header {
 	display: grid;
 	place-content: center;
 	padding: 7.5px 15px;
+	border: 1px solid var(--border-color);
 	border-radius: 5px;
 	cursor: pointer;
 	font-weight: 500;
+	background-color: var(--button-bg);
+	color: var(--button-text-color);
 }
 
 .button:hover {
-	background-color: rgb(255, 147, 147);
+	background-color: var(--button-hover-bg);
 	scale: 1.1;
 	transition: all 0.2s;
 	color: var(--text-color);
@@ -121,7 +139,7 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border: 1px solid var(--text-color-alpha);
+	border: 1px solid var(--border-color);
 	background-color: var(--section-shadow);
 	padding: 10px 15px;
 	border-radius: 10px;
@@ -161,7 +179,7 @@ header {
 input[type='checkbox'] {
 	color: currentColor;
 	width: 25px;
-	border: 0.15em solid currentColor;
+	border: 0.15em solid var(--border-color);
 	border-radius: 5px;
 	cursor: pointer;
 }
