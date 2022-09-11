@@ -176,7 +176,7 @@ function App() {
     if (theme == "dark") {
       document.querySelector("body").classList.add("dark-theme")
     } else {
-      document.querySelector("body").classList.rmeove("dark-theme")
+      document.querySelector("body").classList.remove("dark-theme")
 
     }
   }
