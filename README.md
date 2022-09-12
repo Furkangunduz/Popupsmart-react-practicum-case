@@ -3,8 +3,8 @@
  This app made for Popupsmart practicum application.
  <br>
 🔗[Live demo](https://popupsmart-react-practicum-case.vercel.app/)
-##
-## Yapılacaklar
+<br>
+## YAPILACAKLAR
  - [x] Kullanıcıdan kullanıcı adı alınmasını ve localstorage da saklamanızı istiyoruz. Sayfanın herhangi bir yerinde kullanıcı adını gösterebilirsiniz.
  - [x] Todolar üzerinde tüm CRUD operasyonlarının gerçekleşmesini istiyoruz. (Todo ekleme, silme, düzenleme, todoları listeleme). Tüm operasyonları, oluşturduğunuz API üzerinden gerçekleştirmelisiniz.
  - [x]  Yeni todo eklenirken input field’ı boş olmamalı, minimum 3 karakter içermeli.
