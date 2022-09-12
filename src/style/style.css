@@ -47,11 +47,19 @@ body,
 }
 main {
 	max-width: 500px;
+	height: fit-content;
 	margin: auto;
 	display: flex;
 	flex-direction: column;
 	color: var(--text-color);
 }
+section {
+	border: 2px solid var(--border-color);
+	border-radius: 10px;
+	padding: 15px 25px;
+	min-height: 80vh;
+}
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -131,7 +139,7 @@ header {
 	gap: 10px;
 	max-height: 50vh;
 	overflow-y: auto;
-	margin-top: 35px;
+	margin-top: 15px;
 	padding: 10px;
 }
 
