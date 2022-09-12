@@ -1,11 +1,16 @@
 import deleteIcon from '../images/delete.svg';
 import editIcon from '../images/edit.svg';
 
-function TodoItem({ todo, onDelete, toggleCompleted, chooseTodoForEdit }) {
+import { useContext } from 'react';
+import TodoContext from '../context/TodoContext';
+
+function TodoItem({ todo }) {
+	const { onDelete, toggleCompleted, chooseTodoForEdit } = useContext(TodoContext);
+
 	return (
-		<li className={`todo-item ${todo.isCompleted ? 'completed-todo' : ''}`}>
+		<li className={`todo-item ${todo?.isCompleted ? 'completed-todo' : ''}`}>
 			<div>
-				<p>{todo.content}</p>
+				<p>{todo?.content}</p>
 			</div>
 			<div className='todo-actions'>
 				<img
@@ -13,7 +18,7 @@ function TodoItem({ todo, onDelete, toggleCompleted, chooseTodoForEdit }) {
 					width='30px'
 					alt='delete'
 					onClick={() => {
-						onDelete(todo.id);
+						onDelete(todo?.id);
 					}}
 				/>
 				<img
@@ -21,7 +26,7 @@ function TodoItem({ todo, onDelete, toggleCompleted, chooseTodoForEdit }) {
 					width='30px'
 					alt='edit'
 					onClick={() => {
-						chooseTodoForEdit(todo.id);
+						chooseTodoForEdit(todo?.id);
 					}}
 				/>
 				<input

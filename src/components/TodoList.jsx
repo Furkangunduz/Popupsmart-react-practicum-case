@@ -1,32 +1,29 @@
 import TodoItem from './TodoItem';
+import { useContext } from 'react';
+import TodoContext from '../context/TodoContext';
 
-function TodoList({ todos, onDelete, deleteAllTodos, toggleCompleted, chooseTodoForEdit }) {
+function TodoList() {
+	const { todos, deleteAllTodos } = useContext(TodoContext);
 	return (
-		<ul className='todo-list-container'>
+		<>
 			{todos.length > 0 && (
 				<div
 					style={{
 						width: '100%',
 						display: 'flex',
 						justifyContent: 'flex-start',
-						marginBottom: '10px',
+						marginTop: '15px',
 					}}>
 					<button onClick={deleteAllTodos} className='button'>
 						Delete all
 					</button>
 				</div>
 			)}
-
-			{todos.map((todo) => (
-				<TodoItem
-					key={todo.id}
-					todo={todo}
-					onDelete={onDelete}
-					toggleCompleted={toggleCompleted}
-					chooseTodoForEdit={chooseTodoForEdit}
-				/>
-			))}
-		</ul>
+			<ul className='todo-list-container'>
+				{todos.length > 0 &&
+					todos.map((todo) => <TodoItem key={todo.id} todo={todo} />)}
+			</ul>
+		</>
 	);
 }
 

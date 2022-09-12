@@ -1,6 +1,10 @@
 import '../style/switchbutton.css';
+import { useContext } from 'react';
 
-function ThemeSwitch({ changeTheme, theme }) {
+import ThemeContext from '../context/ThemeContext';
+
+function ThemeSwitch() {
+	const { changeTheme, theme } = useContext(ThemeContext);
 	return (
 		<div className='theme-switch-wrapper'>
 			<label className='theme-switch' htmlFor='checkbox'>

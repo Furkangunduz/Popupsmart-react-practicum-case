@@ -1,12 +1,17 @@
 import React from 'react';
 
-function Login({ username, setUsername, onLogin }) {
+import { useContext } from 'react';
+import TodoContext from '../context/TodoContext';
+
+function Login() {
+	const { username, setUsername, onLogin } = useContext(TodoContext);
+
 	return (
 		<div className='login'>
 			<div className='form_group'>
 				<input
 					type='input'
-					autocomplete='off'
+					autoComplete='off'
 					className='form_field'
 					placeholder='Enter name.'
 					name='newtodo'

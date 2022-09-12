@@ -1,6 +1,9 @@
 import Exit from '../images/exit.svg';
+import { useContext } from 'react';
+import TodoContext from '../context/TodoContext';
 
-function Header({ username, onLeave }) {
+function Header() {
+	const { username, onLeave } = useContext(TodoContext);
 	return (
 		<header>
 			<div>

@@ -1,18 +1,24 @@
 import '../style/todoInput.css';
 
-function AddTodo({ value, onChange, onSubmit, onEdit, isEditing, editingTodoId }) {
+import { useContext } from 'react';
+import TodoContext from '../context/TodoContext';
+
+function AddTodo() {
+	const { newTodo, onChange, onSubmit, onEdit, isEditing, editingTodoId } =
+		useContext(TodoContext);
+
 	return (
 		<div className='addTodo'>
 			<div className='form_group'>
 				<input
-					autocomplete='off'
+					autoComplete='off'
 					type='input'
 					className='form_field'
 					placeholder='What to do today ?'
 					name='newtodo'
 					id='newtodo'
 					onChange={onChange}
-					value={value}
+					value={newTodo.content}
 				/>
 				<label htmlFor='newtodo' className='form_label'>
 					What to do today ?
