@@ -17,6 +17,14 @@ Promise, .then veya async/await ile asenkron işlemleri gerçekleştirebilirsini
 
 <br>
 
+<h2>LOCALDE ÇALIŞTIRMAK İÇİN</h2>
+
+* Projeyi clonelayın.
+* "npm i" ile kütüphanleri kurun.
+* Proje içindedeki ".env.example" dosyasının ismini ".env" olarak değiştirin.
+* .env içerisine kendi mockapi endpointinizi yerleştirin. [🔗 Buraya](https://mockapi.io/clone/631cced6789612cd07a17f6d) tıklayarak örnek Api clonelayabilirsiniz.
+
+ 
 <h1> UYGULAMA GÖRSELLERİ </h1>
 <h2>Light Mode </h2>
 <p float="left">
