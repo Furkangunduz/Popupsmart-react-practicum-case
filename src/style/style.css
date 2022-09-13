@@ -137,7 +137,7 @@ header {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-	max-height: 50vh;
+	max-height: 45vh;
 	overflow-y: auto;
 	margin-top: 15px;
 	padding: 10px;
